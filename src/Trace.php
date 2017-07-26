@@ -35,7 +35,7 @@ class Trace implements Tracer
     public function parseTraceURI(array $ctx)
     {
         $ctx = array_change_key_case($ctx, CASE_LOWER);
-        $key = strtolower($this->getKey());
+        $key = strtolower(Tracer::KEY);
 
         if (isset($ctx[$key])) {
             $url = $ctx[$key];
