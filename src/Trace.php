@@ -149,7 +149,7 @@ class Trace implements Tracer
         ]);
     }
 
-    private function getKey()
+    public function getKey()
     {
         return self::buildKey($this->traceHost, $this->tracePort, $this->tracePath, $this->traceArgs);
     }
