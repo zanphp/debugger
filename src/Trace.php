@@ -218,6 +218,11 @@ class Trace implements Tracer
                 $kv = [ "class" => get_class($object) ];
                 $reflect = new \ReflectionClass($object);
                 foreach ($reflect->getProperties() as $prop) {
+                    // 2017-08-09忽略非public属性
+                    if (!$prop->isPublic()) {
+                        continue;
+                    }
+
                     $prop->setAccessible(true);
                     $value = $prop->getValue($object);
                     if ($value === $object || in_array($value, $processed, true)) {
