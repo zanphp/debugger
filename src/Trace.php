@@ -89,8 +89,10 @@ class Trace implements Tracer
         $info = [
             "ts" => $ts,
             "cost" => ceil(($end - $begin) * 1000) . "ms",
-            "req" => self::convert($req),
-            "res" => self::convert($res),
+            // "req" => self::convert($req),
+            // "res" => self::convert($res),
+            "req" => \json_encode($req),
+            "res" => \json_encode($res),
         ];
 
         $this->trace($logType, $traceType, $name, $info);
